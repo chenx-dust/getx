@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import '../../../get_core/get_core.dart';
+import 'package:get/get_core/get_core.dart';
 
 class _IntlHost {
   Locale? locale;
@@ -8,16 +8,6 @@ class _IntlHost {
   Locale? fallbackLocale;
 
   Map<String, Map<String, String>> translations = {};
-}
-
-extension FirstWhereExt<T> on List<T> {
-  /// The first element satisfying [test], or `null` if there are none.
-  T? firstWhereOrNull(bool Function(T element) test) {
-    for (var element in this) {
-      if (test(element)) return element;
-    }
-    return null;
-  }
 }
 
 extension LocalesIntl on GetInterface {

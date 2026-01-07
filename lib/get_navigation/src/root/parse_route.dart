@@ -1,15 +1,18 @@
-import '../../get_navigation.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 
 class RouteDecoder {
   final List<GetPage> treeBranch;
+
   GetPage? get route => treeBranch.isEmpty ? null : treeBranch.last;
   final Map<String, String> parameters;
   final Object? arguments;
+
   const RouteDecoder(
     this.treeBranch,
     this.parameters,
     this.arguments,
   );
+
   void replaceArguments(Object? arguments) {
     final route = this.route;
     if (route != null) {
@@ -177,7 +180,7 @@ class ParseRouteTree {
   }
 }
 
-extension FirstWhereExt<T> on List<T> {
+extension _FirstWhereExt<T> on List<T> {
   /// The first element satisfying [test], or `null` if there are none.
   T? firstWhereOrNull(bool Function(T element) test) {
     for (var element in this) {

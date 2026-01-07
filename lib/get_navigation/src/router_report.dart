@@ -1,8 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/widgets.dart';
-
-import '../../get.dart';
+import 'package:get/get.dart';
 
 class RouterReportManager<T> {
   /// Holds a reference to `Get.reference` when the Instance was
@@ -14,10 +13,6 @@ class RouterReportManager<T> {
   /// Experimental feature to keep the lifecycle and memory management with
   /// non-singleton instances.
   static final Map<Route?, HashSet<Function>> _routesByCreate = {};
-
-  void printInstanceStack() {
-    Get.log(_routesKey.toString());
-  }
 
   static Route? _current;
 
@@ -45,7 +40,7 @@ class RouterReportManager<T> {
   static void appendRouteByCreate(GetLifeCycleBase i) {
     _routesByCreate[_current] ??= HashSet<Function>();
     // _routesByCreate[Get.reference]!.add(i.onDelete as Function);
-    _routesByCreate[_current]!.add(i.onDelete);
+    _routesByCreate[_current]!.add(i.onDelete.call);
   }
 
   static void reportRouteDispose(Route disposed) {

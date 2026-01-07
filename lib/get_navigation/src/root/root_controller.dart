@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../get.dart';
+import 'package:get/get.dart';
 
 class GetMaterialController extends SuperController {
   bool testMode = false;
@@ -11,22 +10,11 @@ class GetMaterialController extends SuperController {
 
   final scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
-  bool defaultPopGesture = GetPlatform.isIOS;
-  bool defaultOpaqueRoute = true;
-
-  Transition? defaultTransition;
-  Duration defaultTransitionDuration = const Duration(milliseconds: 300);
-  Curve defaultTransitionCurve = Curves.easeOutQuad;
-
-  Curve defaultDialogTransitionCurve = Curves.easeOutQuad;
-
-  Duration defaultDialogTransitionDuration = const Duration(milliseconds: 300);
+  Transition defaultTransition = Transition.native;
 
   final routing = Routing();
 
   Map<String, String?> parameters = {};
-
-  CustomTransition? customTransition;
 
   var _key = GlobalKey<NavigatorState>(debugLabel: 'Key Created by default');
 

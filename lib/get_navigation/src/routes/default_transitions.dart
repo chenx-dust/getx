@@ -1,13 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/routes/circular_reveal_clipper.dart';
 
-import 'circular_reveal_clipper.dart';
-
-class LeftToRightFadeTransition {
-  Widget buildTransitions(
+abstract class LeftToRightFadeTransition {
+  static Widget buildTransitions(
       BuildContext context,
-      Curve? curve,
-      Alignment? alignment,
       Animation<double> animation,
       Animation<double> secondaryAnimation,
       Widget child) {
@@ -29,11 +26,9 @@ class LeftToRightFadeTransition {
   }
 }
 
-class RightToLeftFadeTransition {
-  Widget buildTransitions(
+abstract class RightToLeftFadeTransition {
+  static Widget buildTransitions(
       BuildContext context,
-      Curve? curve,
-      Alignment? alignment,
       Animation<double> animation,
       Animation<double> secondaryAnimation,
       Widget child) {
@@ -55,8 +50,8 @@ class RightToLeftFadeTransition {
   }
 }
 
-class NoTransition {
-  Widget buildTransitions(
+abstract class NoTransition {
+  static Widget buildTransitions(
       BuildContext context,
       Curve curve,
       Alignment alignment,
@@ -67,11 +62,9 @@ class NoTransition {
   }
 }
 
-class FadeInTransition {
-  Widget buildTransitions(
+abstract class FadeInTransition {
+  static Widget buildTransitions(
       BuildContext context,
-      Curve? curve,
-      Alignment? alignment,
       Animation<double> animation,
       Animation<double> secondaryAnimation,
       Widget child) {
@@ -79,11 +72,9 @@ class FadeInTransition {
   }
 }
 
-class SlideDownTransition {
-  Widget buildTransitions(
+abstract class SlideDownTransition {
+  static Widget buildTransitions(
       BuildContext context,
-      Curve? curve,
-      Alignment? alignment,
       Animation<double> animation,
       Animation<double> secondaryAnimation,
       Widget child) {
@@ -97,11 +88,9 @@ class SlideDownTransition {
   }
 }
 
-class SlideLeftTransition {
-  Widget buildTransitions(
+abstract class SlideLeftTransition {
+  static Widget buildTransitions(
       BuildContext context,
-      Curve? curve,
-      Alignment? alignment,
       Animation<double> animation,
       Animation<double> secondaryAnimation,
       Widget child) {
@@ -115,11 +104,9 @@ class SlideLeftTransition {
   }
 }
 
-class SlideRightTransition {
-  Widget buildTransitions(
+abstract class SlideRightTransition {
+  static Widget buildTransitions(
       BuildContext context,
-      Curve? curve,
-      Alignment? alignment,
       Animation<double> animation,
       Animation<double> secondaryAnimation,
       Widget child) {
@@ -133,11 +120,9 @@ class SlideRightTransition {
   }
 }
 
-class SlideTopTransition {
-  Widget buildTransitions(
+abstract class SlideTopTransition {
+  static Widget buildTransitions(
       BuildContext context,
-      Curve? curve,
-      Alignment? alignment,
       Animation<double> animation,
       Animation<double> secondaryAnimation,
       Widget child) {
@@ -151,47 +136,25 @@ class SlideTopTransition {
   }
 }
 
-class ZoomInTransition {
-  Widget buildTransitions(
+abstract class SizeTransitions {
+  static Widget buildTransitions(
       BuildContext context,
-      Curve? curve,
-      Alignment? alignment,
-      Animation<double> animation,
-      Animation<double> secondaryAnimation,
-      Widget child) {
-    return ScaleTransition(
-      scale: animation,
-      child: child,
-    );
-  }
-}
-
-class SizeTransitions {
-  Widget buildTransitions(
-      BuildContext context,
-      Curve curve,
-      Alignment? alignment,
       Animation<double> animation,
       Animation<double> secondaryAnimation,
       Widget child) {
     return Align(
       alignment: Alignment.center,
       child: SizeTransition(
-        sizeFactor: CurvedAnimation(
-          parent: animation,
-          curve: curve,
-        ),
+        sizeFactor: animation,
         child: child,
       ),
     );
   }
 }
 
-class CircularRevealTransition {
-  Widget buildTransitions(
+abstract class CircularRevealTransition {
+  static Widget buildTransitions(
       BuildContext context,
-      Curve? curve,
-      Alignment? alignment,
       Animation<double> animation,
       Animation<double> secondaryAnimation,
       Widget child) {

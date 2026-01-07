@@ -1,8 +1,9 @@
 import 'dart:async';
 
-import '../../../get_core/get_core.dart';
-import '../rx_types/rx_types.dart';
-import 'utils/debouncer.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
+import 'package:get/get_core/get_core.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/get_rx/src/rx_workers/utils/debouncer.dart';
 
 bool _conditional(dynamic condition) {
   if (condition == null) return true;
@@ -15,6 +16,7 @@ typedef WorkerCallback<T> = Function(T callback);
 
 class Workers {
   Workers(this.workers);
+
   final List<Worker> workers;
 
   void dispose() {
@@ -257,7 +259,7 @@ class Worker {
   //final bool _verbose = true;
   void _log(String msg) {
     //  if (!_verbose) return;
-    Get.log('$runtimeType $type $msg');
+    if (kDebugMode) Get.log('$runtimeType $type $msg');
   }
 
   void dispose() {

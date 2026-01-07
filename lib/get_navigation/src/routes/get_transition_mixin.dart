@@ -164,13 +164,13 @@ Cannot read the previousTitle for a route that has not yet been installed''',
 
     switch (Get.defaultTransition) {
       case Transition.native:
-        return context.theme.pageTransitionsTheme.buildTransitions(
-          rawRoute,
-          context,
-          animation,
-          secondaryAnimation,
-          child,
-        );
+        return Theme.of(context).pageTransitionsTheme.buildTransitions(
+              rawRoute,
+              context,
+              animation,
+              secondaryAnimation,
+              child,
+            );
 
       case Transition.cupertino || Transition.cupertinoDialog:
         return CupertinoRouteTransitionMixin.buildPageTransitions<T>(
